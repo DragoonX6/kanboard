@@ -48,6 +48,25 @@ class MailHelper extends Base
     }
 
     /**
+     * Get mail sender address
+     *
+     * @access public
+     * @return string
+     */
+    public function getMailReturnPath()
+    {
+        if (MAIL_CONFIGURATION) {
+            $email = $this->configModel->get('mail_return_path');
+
+            if (! empty($email)) {
+                return $email;
+            }
+        }
+
+        return MAIL_RETURN_PATH;
+    }
+
+    /**
      * Get mail transport
      *
      * @access public

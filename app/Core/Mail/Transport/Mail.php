@@ -34,6 +34,7 @@ class Mail extends Base implements ClientInterface
             $message = Swift_Message::newInstance()
                 ->setSubject($subject)
                 ->setFrom($this->helper->mail->getMailSenderAddress(), $authorName)
+		->setReturnPath($this->helper->mail->getMailReturnPath())
                 ->setTo(array($recipientEmail => $recipientName));
 
             if (! empty($authorEmail)) {
